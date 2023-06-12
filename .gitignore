@@ -1,0 +1,6 @@
+#Data Files
+
+/data/*
+
+# Config and Access files 
+/etc/*
