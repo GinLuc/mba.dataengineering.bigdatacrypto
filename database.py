@@ -63,7 +63,7 @@ def insertCoinDb(connection, coin_id, name, symbol, image):
 def insertQuoteDb(connection, date, coin_id, open, close, high, low, volume, marketCap):
     print('Inserting database into table QUOTES...')
     with connection.cursor() as cursor:
-        cursor.execute("UPDATE QUOTES SET OPEN_VALUE = :1, CLOSE_VALUE = :2, HIGH_VALUE = :3, LOW_VALUE = :4, VOLUME = :5, MARKET_CAP = :6, UPDATED_DATE = :7 WHERE HISTORICAL_DATE = TO_DATE(:8, 'YYYY-MM-DD') AND CRYPTO_ID = :9", [open, close, high, low, volume, marketCap, datetime.now(), date, coin_id])
+        cursor.execute("UPDATE QUOTES SET OPEN_VALUE = :1, CLOSE_VALUE = :2, HIGH_VALUE = :3, LOW_VALUE = :4, VOLUME = :5, MARKET_CAP = :6, CREATION_DATE = :7 WHERE HISTORICAL_DATE = TO_DATE(:8, 'YYYY-MM-DD') AND CRYPTO_ID = :9", [open, close, high, low, volume, marketCap, datetime.now(), date, coin_id])
         print(str(cursor.rowcount) + " rows updated into QUOTES table")
         if (cursor.rowcount == 0):
             cursor.execute("INSERT into QUOTES (HISTORICAL_DATE, CRYPTO_ID, OPEN_VALUE, CLOSE_VALUE, HIGH_VALUE, LOW_VALUE, VOLUME, MARKET_CAP, CREATION_DATE) VALUES(TO_DATE(:1, 'YYYY-MM-DD'), :2, :3, :4, :5, :6, :7, :8, :9)", [date, coin_id, open, close, high, low, volume, marketCap, datetime.now()])
