@@ -4,3 +4,5 @@
 
 # Config and Access files 
 /etc/*
+
+__pycache__/
