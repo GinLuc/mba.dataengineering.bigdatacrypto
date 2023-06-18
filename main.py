@@ -13,7 +13,7 @@ import coinsquotesapi as api
 coins = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA', 'DOGE', 'SOL', 'MATIC', 'LTC', 'ETC']
 
 
-password = getpass.getpass("Enter database password: ")
+#password = getpass.getpass("Enter database password: ")
 
 
 # Getting historical quotes

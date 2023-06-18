@@ -79,6 +79,13 @@ def saveImageUrlDb(connection, info):
             print(str(cursor.rowcount) + " rows updated into COINS table")
 
 
-if __name__=='__main__':
-    connection = get_connection(pw_input='FaculdadeImpacta@2023')
-    create_tables(connection)
+def getDatabaseQuotes(connection):
+    results = []
+    columns = []
+    with connection.cursor() as cursor:
+        '''for result in cursor.execute("SELECT * FROM QUOTES"):
+            results.append(result)'''
+        cursor.execute("SELECT * FROM QUOTES")
+        results = cursor.fetchall()
+            
+    return results

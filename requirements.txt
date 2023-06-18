@@ -1,2 +1,5 @@
 sqlalchemy
 oracledb
+streamlit
+matplotlib
+plotly
