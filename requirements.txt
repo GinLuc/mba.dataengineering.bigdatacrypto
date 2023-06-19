@@ -1,5 +1,5 @@
 sqlalchemy
 oracledb
 streamlit
-matplotlib
 plotly
+smtplib

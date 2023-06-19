@@ -9,7 +9,7 @@ from candlestick import get_candlestick_plot
 coins = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA', 'DOGE', 'SOL', 'MATIC', 'LTC', 'ETC']
 crypto_columns = ['ID', 'HISTORICAL_DATE', 'CRYPTO_ID', 'OPEN_VALUE', 'CLOSE_VALUE', 'HIGH_VALUE', 
            'LOW_VALUE', 'VOLUME', 'MARKET_CAP', 'CREATION_DATE']
-DATABASE_PASSWORD = "INSIRA SUA SENHA DE ACESSO AO ORACLE AQUI"
+DATABASE_PASSWORD = "FaculdadeImpacta@2023"
 
 
 st.title('Crypto Price App Dashboard')
@@ -17,15 +17,6 @@ st.markdown("""
 Visualize aqui o histórico das principais criptomoedas da plataforma **CoinMarketCap**!
 """)
             
-#---------------------------------#
-# About
-expander_bar = st.expander("About")
-expander_bar.markdown("""
-* **Implemented by:** Gian Lucca, Juliana Apolo, Lucas, Vitor (MBA Faculdade Impacta Engenharia de Software - Grupo 3)
-* **Python libraries:** pandas, streamlit, numpy, matplotlib, seaborn, BeautifulSoup, requests, json, time, oracledb
-* **Data source:** [CoinMarketCap](http://coinmarketcap.com) and [AlphaVantage](www.alphavantage.co).
-* **Credit:** Web scraper adapted from the Medium article *[Web Scraping Crypto Prices With Python](https://towardsdatascience.com/web-scraping-crypto-prices-with-python-41072ea5b5bf)* written by [Bryan Feng](https://medium.com/@bryanf).
-""")
 
 #---------------------------------#
 # Page layout (continued)
@@ -66,9 +57,6 @@ def load_data():
 df = load_data()
 
 
-st.title("Tabela de valores")
-
-
 days_to_plot = st.sidebar.slider(
     'Days to Plot', 
     min_value = 1,
@@ -101,3 +89,16 @@ st.plotly_chart(
     get_candlestick_plot(coin_data, ma1, ma2, currency_price_unit),
     use_container_width = True,
 )
+
+
+#---------------------------------#
+# About
+expander_bar = st.expander("About")
+expander_bar.markdown("""
+* **Implemented by:** Gian Lucca, Juliana Apolo, Lucas, Vitor (MBA Faculdade Impacta Engenharia de Software - Grupo 3)
+* **Python libraries:** pandas, streamlit, numpy, matplotlib, seaborn, BeautifulSoup, requests, json, time, oracledb
+* **Data source:** [CoinMarketCap](http://coinmarketcap.com) and [AlphaVantage](www.alphavantage.co).
+* **Credit:** 
+    * Web scraper adapted from the Medium article *[Web Scraping Crypto Prices With Python](https://towardsdatascience.com/web-scraping-crypto-prices-with-python-41072ea5b5bf)* written by [Bryan Feng](https://medium.com/@bryanf). 
+    * Candlestick chart adapted from the Medium article *[Easy and Interactive Candlestick Charts in Python](https://medium.com/@dannygrovesn7/using-streamlit-and-plotly-to-create-interactive-candlestick-charts-a2a764ad0d8e)* written by [Danny Groves](https://medium.com/@dannygrovesn7).
+""")
