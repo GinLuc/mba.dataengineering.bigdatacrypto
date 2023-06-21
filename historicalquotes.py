@@ -13,12 +13,9 @@ import coinsquotesapi as api
 coins = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA', 'DOGE', 'SOL', 'MATIC', 'LTC', 'ETC']
 
 
-#password = getpass.getpass("Enter database password: ")
-
 
 # Getting historical quotes
-def getHistoricalQuotes():
-    connection = db.get_connection(password)
+def getHistoricalQuotes(connection):
     count = 1
     try:
         for c in coins:
@@ -50,4 +47,6 @@ def getHistoricalQuotes():
     connection.close()
 
 if __name__=='__main__':
-    getHistoricalQuotes()
+    password = getpass.getpass("Enter database password: ")
+    connection = db.get_connection(password)
+    getHistoricalQuotes(connection)

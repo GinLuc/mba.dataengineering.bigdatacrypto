@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd 
+import getpass
+
 
 import database as db
 import coinsquotesapi as api
@@ -9,7 +11,7 @@ from candlestick import get_candlestick_plot
 coins = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA', 'DOGE', 'SOL', 'MATIC', 'LTC', 'ETC']
 crypto_columns = ['ID', 'HISTORICAL_DATE', 'CRYPTO_ID', 'OPEN_VALUE', 'CLOSE_VALUE', 'HIGH_VALUE', 
            'LOW_VALUE', 'VOLUME', 'MARKET_CAP', 'CREATION_DATE']
-DATABASE_PASSWORD = "FaculdadeImpacta@2023"
+DATABASE_PASSWORD = getpass.getpass("Digite a senha do banco de dados: ")
 
 
 st.title('Crypto Price App Dashboard')
@@ -33,7 +35,7 @@ currency_price_unit = col1.selectbox('Selecione aqui o tipo de criptomoeda', coi
 
 
 # Web scraping of CoinMarketCap data
-@st.cache
+@st.cache_data
 def load_data():
 
     connection = db.get_connection(DATABASE_PASSWORD)

@@ -2,4 +2,3 @@ sqlalchemy
 oracledb
 streamlit
 plotly
-smtplib
